@@ -4,6 +4,7 @@ from juntagrico.views import get_menu_dict
 from juntagrico_polling.entity.polling import Vote
 from juntagrico_polling.dao.pollingdao import PollingDao
 
+
 @login_required
 def poll(request, poll_id=None, choice=None):
     renderdict = get_menu_dict(request)
@@ -11,12 +12,13 @@ def poll(request, poll_id=None, choice=None):
         if poll_id is not None and choice is not None and 0 <= choice <= 2:
             poll = PollingDao.active_polls_ordered().get(id=poll_id)
             if poll:
-                Vote.objects.update_or_create(user=request.user, poll=poll, defaults = {'choice': choice})
+                Vote.objects.update_or_create(
+                    user=request.user, poll=poll, defaults={'choice': choice})
 
         polls = PollingDao.active_polls_ordered()
         user_votes = PollingDao.votes_from_user(request.user)
         for thispoll in polls:
-            vote = user_votes.filter(poll = thispoll)
+            vote = user_votes.filter(poll=thispoll)
             if vote:
                 vote = vote.get()
                 thispoll.choice = vote.choice

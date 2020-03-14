@@ -19,6 +19,7 @@ class Poll(models.Model):
     class Meta:
         permissions = (('can_see_poll_results', _('Can see poll results')),)
 
+
 class Vote(models.Model):
     '''
     Single vote by a member

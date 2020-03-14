@@ -10,7 +10,7 @@ class PollingDao:
     def is_member_with_shares(user):
         member = Member.objects.get(user=user)
         allow_vote = False
-        if member and member.is_cooperation_member == True:
+        if member and member.is_cooperation_member is True:
             allow_vote = True
         return allow_vote
 
