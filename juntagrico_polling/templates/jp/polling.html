@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load config %}
+{% load i18n %}
+{% block page_title %}
+    <h3>{% trans "Poll" %}</h3>
+{% endblock %}
+
+{% block content %}
+    {% if notallowed == 1 %}
+        <p>
+            {% trans "You are not allowed to participate in the poll. Please contact us via mail for further information." %}
+        </p>
+    {% else %}
+        {% for poll in polls %}
+               <h4>{{ poll.title }}</h4>
+                <p><strong>{{ poll.question }}</strong></p>
+                <p>{{ poll.description }}</p>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                  <button type="button" class="btn {% if poll.choice == 1 %}btn-success{% else %}btn-secondary{% endif %}"
+                          onclick="vote({{ poll.id }},1)">Ja</button>
+                  <button type="button" class="btn {% if poll.choice == 0 %}btn-success{% else %}btn-secondary{% endif %}"
+                          onclick="vote({{ poll.id }},0)">Nein</button>
+                  <button type="button" class="btn {% if poll.choice == 2 %}btn-success{% else %}btn-secondary{% endif %}"
+                          onclick="vote({{ poll.id }},2)">Enthaltung</button>
+                </div>
+                {% if poll.choice >= 0 %}<strong>{% trans "Vote successful!" %}</strong>{% endif %}
+    <hr>
+            {% empty %}
+                {% trans "No active polls found" %}
+            {% endfor %}
+    {% endif %}
+{% endblock %}
+
+{% block scripts %}
+<script>
+function vote(id,choice)
+{
+    if(Number.isInteger(id) && Number.isInteger(choice)) {
+        location.href = "/poll/vote/" + id + "/" + choice + "/";
+    }
+}
+</script>
+{% endblock %}

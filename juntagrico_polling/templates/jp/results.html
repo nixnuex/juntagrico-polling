@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load config %}
+{% load i18n %}
+{% block page_title %}
+    <h3>{% trans "Poll Results" %}</h3>
+{% endblock %}
+
+{% block content %}
+    <table width="100%">
+        <tr>
+            <td><strong>ID</strong></td>
+            <td><strong>{% trans "Poll" %}</strong></td>
+            <td><strong>{% trans "Open until" %}</strong></td><td><strong>{% trans "Yes" %}</strong></td>
+            <td><strong>{% trans "No" %}</strong></td><td><strong>{% trans "Abstention" %}</strong></td>
+            <td><strong>{% trans "Total" %}</strong></td>
+        </tr>
+
+        {% for poll in polls %}
+        <tr>
+            <td>{{ poll.id }}</td><td>{{ poll.title }}</td>
+            <td>{{ poll.close_date }}</td><td>{{ poll.yes }}</td>
+            <td>{{ poll.no }}</td><td>{{ poll.abstention }}</td><td>{{ poll.votes }}</td>
+        </tr>
+        {% empty %}
+            {% trans "No polls found" %}
+        {% endfor %}
+    </table>
+{% endblock %}

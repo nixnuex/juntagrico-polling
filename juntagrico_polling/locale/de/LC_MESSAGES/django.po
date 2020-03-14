@@ -1,0 +1,112 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-03-14 18:39+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: entity/polling.py:10
+msgid "Title"
+msgstr "Titel"
+
+#: entity/polling.py:11
+msgid "Question"
+msgstr "Frage"
+
+#: entity/polling.py:12
+msgid "Description"
+msgstr "Beschreibung"
+
+#: entity/polling.py:13
+msgid "Open Date"
+msgstr "Startdatum"
+
+#: entity/polling.py:14
+msgid "Close Date"
+msgstr "Enddatum"
+
+#: entity/polling.py:15
+msgid "Display Order"
+msgstr "Anzeigereihenfolge"
+
+#: entity/polling.py:16
+msgid "Active"
+msgstr "Aktiv"
+
+#: entity/polling.py:17
+msgid "Add Link to Main Menu"
+msgstr "Link zum Menü hinzufügen"
+
+#: entity/polling.py:20
+msgid "Can see poll results"
+msgstr "Kann Abstimmungsergebnisse sehen"
+
+#: entity/polling.py:30 templates/jp/results.html:13
+msgid "Yes"
+msgstr "Ja"
+
+#: entity/polling.py:31 templates/jp/results.html:14
+msgid "No"
+msgstr "Nein"
+
+#: entity/polling.py:32
+msgid "ABSTENTION"
+msgstr "Enthaltung"
+
+#: entity/polling.py:38
+msgid "Last Update"
+msgstr "Letztes Update"
+
+#: templates/jp/menu.html:7 templates/jp/polling.html:5
+#: templates/jp/results.html:12
+msgid "Poll"
+msgstr "Abstimmung"
+
+#: templates/jp/polling.html:11
+msgid ""
+"You are not allowed to participate in the poll. Please contact us via mail "
+"for further information."
+msgstr ""
+"Du hast keine Berechtigung, an Abstimmungen teilzunehmen. Bitte kontaktiere "
+"uns per E-Mail für weitere Informationen."
+
+#: templates/jp/polling.html:26
+msgid "Vote successful!"
+msgstr "Abstimmung erfolgt!"
+
+#: templates/jp/polling.html:29
+msgid "No active polls found"
+msgstr "Keine aktiven Abstimmungen gefunden"
+
+#: templates/jp/results.html:5
+msgid "Poll Results"
+msgstr "Abstimmungsergebnisse"
+
+#: templates/jp/results.html:13
+msgid "Open until"
+msgstr "Offen bis"
+
+#: templates/jp/results.html:14
+msgid "Abstention"
+msgstr "Enthaltung"
+
+#: templates/jp/results.html:15
+msgid "Total"
+msgstr "Gesamt"
+
+#: templates/jp/results.html:25
+msgid "No polls found"
+msgstr "Keine Abstimmungen gefunden"

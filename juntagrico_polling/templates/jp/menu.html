@@ -1,0 +1,9 @@
+{% load menus %}
+{% user_menu as menus%}
+{% load i18n %}
+
+{% if menus %}
+<li class="nav-item">
+    <a class="nav-link" href="/poll/">{% trans "Poll" %}</a>
+</li>
+{% endif %}

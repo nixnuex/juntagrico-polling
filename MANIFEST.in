@@ -1,0 +1,7 @@
+include LICENSE
+include README.md
+recursive-include juntagrico_polling/static *
+recursive-include juntagrico_polling/templates *
+recursive-include juntagrico_polling/locale *
+include requirements.txt
+global-exclude *.pyc
