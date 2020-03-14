@@ -20,11 +20,13 @@ class PollingDao:
 
     @staticmethod
     def active_polls_ordered():
-        return Poll.objects.filter(active=True).filter(close_date__gte=timezone.now()).order_by('display_order')
+        return Poll.objects.filter(active=True).\
+            filter(close_date__gte=timezone.now()).order_by('display_order')
 
     @staticmethod
     def active_polls_menu_show():
-        return Poll.objects.filter(active=True).filter(close_date__gte=timezone.now()).filter(add_menu_link=True)
+        return Poll.objects.filter(active=True).\
+            filter(close_date__gte=timezone.now()).filter(add_menu_link=True)
 
     @staticmethod
     def votes_from_user(user):

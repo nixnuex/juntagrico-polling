@@ -16,15 +16,18 @@
                 <p><strong>{{ poll.question }}</strong></p>
                 <p>{{ poll.description }}</p>
                 <div class="btn-group" role="group" aria-label="Basic example">
-                  <button type="button" class="btn {% if poll.choice == 1 %}btn-success{% else %}btn-secondary{% endif %}"
-                          onclick="vote({{ poll.id }},1)">Ja</button>
-                  <button type="button" class="btn {% if poll.choice == 0 %}btn-success{% else %}btn-secondary{% endif %}"
-                          onclick="vote({{ poll.id }},0)">Nein</button>
-                  <button type="button" class="btn {% if poll.choice == 2 %}btn-success{% else %}btn-secondary{% endif %}"
-                          onclick="vote({{ poll.id }},2)">Enthaltung</button>
+                  <button onclick="vote('{% url 'vote' poll.id 1 %}')" type="button"
+                     class="btn {% if poll.choice == 1 %}btn-success{% else %}btn-secondary{% endif %}">
+                      {% trans "Yes" %}</button>
+                  <button onclick="vote('{% url 'vote' poll.id 0 %}')" type="button"
+                     class="btn {% if poll.choice == 0 %}btn-success{% else %}btn-secondary{% endif %}">
+                      {% trans "No" %}</button>
+                  <button onclick="vote('{% url 'vote' poll.id 2 %}')" type="button"
+                     class="btn {% if poll.choice == 2 %}btn-success{% else %}btn-secondary{% endif %}">
+                      {% trans "Abstention" %}</button>
                 </div>
                 {% if poll.choice >= 0 %}<strong>{% trans "Vote successful!" %}</strong>{% endif %}
-    <hr>
+                <hr>
             {% empty %}
                 {% trans "No active polls found" %}
             {% endfor %}
@@ -33,11 +36,9 @@
 
 {% block scripts %}
 <script>
-function vote(id,choice)
+function vote(url)
 {
-    if(Number.isInteger(id) && Number.isInteger(choice)) {
-        location.href = "/poll/vote/" + id + "/" + choice + "/";
-    }
+    location.href = url;
 }
 </script>
 {% endblock %}
