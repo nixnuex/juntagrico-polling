@@ -16,13 +16,13 @@
                 <p><strong>{{ poll.question }}</strong></p>
                 <p>{{ poll.description }}</p>
                 <div class="btn-group" role="group" aria-label="Basic example">
-                  <button onclick="vote('{% url 'vote' poll.id 1 %}')" type="button"
+                  <button onclick="vote('{% url 'polling:vote' poll.id 1 %}')" type="button"
                      class="btn {% if poll.choice == 1 %}btn-success{% else %}btn-secondary{% endif %}">
                       {% trans "Yes" %}</button>
-                  <button onclick="vote('{% url 'vote' poll.id 0 %}')" type="button"
+                  <button onclick="vote('{% url 'polling:vote' poll.id 0 %}')" type="button"
                      class="btn {% if poll.choice == 0 %}btn-success{% else %}btn-secondary{% endif %}">
                       {% trans "No" %}</button>
-                  <button onclick="vote('{% url 'vote' poll.id 2 %}')" type="button"
+                  <button onclick="vote('{% url 'polling:vote' poll.id 2 %}')" type="button"
                      class="btn {% if poll.choice == 2 %}btn-success{% else %}btn-secondary{% endif %}">
                       {% trans "Abstention" %}</button>
                 </div>
