@@ -17,9 +17,13 @@
 
         {% for poll in polls %}
         <tr>
-            <td>{{ poll.id }}</td><td>{{ poll.title }}</td>
-            <td>{{ poll.close_date }}</td><td>{{ poll.yes }}</td>
-            <td>{{ poll.no }}</td><td>{{ poll.abstention }}</td><td>{{ poll.votes }}</td>
+            <td>{{ poll.id }}</td>
+            <td>{{ poll.title }}</td>
+            <td>{{ poll.close_date }}</td>
+            <td>{{ poll.yes }}</td>
+            <td>{{ poll.no }}</td>
+            <td>{% if poll.allow_abstention is True %}{{ poll.abstention }}{% else %}-{% endif %}</td>
+            <td>{{ poll.votes }}</td>
         </tr>
         {% empty %}
             {% trans "No polls found" %}

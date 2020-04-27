@@ -8,6 +8,6 @@ import juntagrico
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include('juntagrico.urls')),
-    path('', include('juntagrico_polling.urls')),
+    url(r'^', include('juntagrico_polling.urls')),
     url(r'^$', juntagrico.views.home),
 ]

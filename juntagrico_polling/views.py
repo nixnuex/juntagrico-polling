@@ -11,7 +11,7 @@ def poll(request, poll_id=None, choice=None):
     if PollingDao.is_member_with_shares(request.user):
         if poll_id is not None and choice is not None and 0 <= choice <= 2:
             poll = PollingDao.active_polls_ordered().get(id=poll_id)
-            if poll:
+            if poll and (choice <= 1 or poll.allow_abstention):
                 Vote.objects.update_or_create(
                     user=request.user, poll=poll, defaults={'choice': choice})
 
@@ -29,7 +29,7 @@ def poll(request, poll_id=None, choice=None):
         })
     else:
         renderdict.update({
-            'notallowed': 1,
+            'forbidden_to_vote': True,
         })
     return render(request, "jp/polling.html", renderdict)
 

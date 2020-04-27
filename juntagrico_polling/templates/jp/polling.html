@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block content %}
-    {% if notallowed == 1 %}
+    {% if forbidden_to_vote is True %}
         <p>
             {% trans "You are not allowed to participate in the poll. Please contact us via mail for further information." %}
         </p>
@@ -22,9 +22,11 @@
                   <button onclick="vote('{% url 'polling:vote' poll.id 0 %}')" type="button"
                      class="btn {% if poll.choice == 0 %}btn-success{% else %}btn-secondary{% endif %}">
                       {% trans "No" %}</button>
+                  {% if poll.allow_abstention is True %}
                   <button onclick="vote('{% url 'polling:vote' poll.id 2 %}')" type="button"
                      class="btn {% if poll.choice == 2 %}btn-success{% else %}btn-secondary{% endif %}">
                       {% trans "Abstention" %}</button>
+                  {% endif %}
                 </div>
                 {% if poll.choice >= 0 %}<strong>{% trans "Vote successful!" %}</strong>{% endif %}
                 <hr>

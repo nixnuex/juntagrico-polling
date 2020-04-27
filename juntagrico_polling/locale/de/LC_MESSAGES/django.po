@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-14 18:39+0100\n"
+"POT-Creation-Date: 2020-04-27 22:48+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,43 +30,51 @@ msgstr "Frage"
 msgid "Description"
 msgstr "Beschreibung"
 
-#: entity/polling.py:13
+#: entity/polling.py:14
+#, fuzzy
+#| msgid "Abstention"
+msgid "Allow Abstention"
+msgstr "Erlaube Enthaltungen"
+
+#: entity/polling.py:15
 msgid "Open Date"
 msgstr "Startdatum"
 
-#: entity/polling.py:14
+#: entity/polling.py:16
 msgid "Close Date"
 msgstr "Enddatum"
 
-#: entity/polling.py:15
+#: entity/polling.py:17
 msgid "Display Order"
 msgstr "Anzeigereihenfolge"
 
-#: entity/polling.py:16
+#: entity/polling.py:19
 msgid "Active"
 msgstr "Aktiv"
 
-#: entity/polling.py:17
+#: entity/polling.py:20
 msgid "Add Link to Main Menu"
 msgstr "Link zum Menü hinzufügen"
 
-#: entity/polling.py:20
+#: entity/polling.py:24
 msgid "Can see poll results"
 msgstr "Kann Abstimmungsergebnisse sehen"
 
-#: entity/polling.py:30 templates/jp/results.html:13
+#: entity/polling.py:35 templates/jp/polling.html:21
+#: templates/jp/results.html:13
 msgid "Yes"
 msgstr "Ja"
 
-#: entity/polling.py:31 templates/jp/results.html:14
+#: entity/polling.py:36 templates/jp/polling.html:24
+#: templates/jp/results.html:14
 msgid "No"
 msgstr "Nein"
 
-#: entity/polling.py:32
+#: entity/polling.py:37
 msgid "ABSTENTION"
 msgstr "Enthaltung"
 
-#: entity/polling.py:38
+#: entity/polling.py:43
 msgid "Last Update"
 msgstr "Letztes Update"
 
@@ -83,11 +91,15 @@ msgstr ""
 "Du hast keine Berechtigung, an Abstimmungen teilzunehmen. Bitte kontaktiere "
 "uns per E-Mail für weitere Informationen."
 
-#: templates/jp/polling.html:26
+#: templates/jp/polling.html:28 templates/jp/results.html:14
+msgid "Abstention"
+msgstr "Enthaltung"
+
+#: templates/jp/polling.html:31
 msgid "Vote successful!"
 msgstr "Abstimmung erfolgt!"
 
-#: templates/jp/polling.html:29
+#: templates/jp/polling.html:34
 msgid "No active polls found"
 msgstr "Keine aktiven Abstimmungen gefunden"
 
@@ -99,14 +111,10 @@ msgstr "Abstimmungsergebnisse"
 msgid "Open until"
 msgstr "Offen bis"
 
-#: templates/jp/results.html:14
-msgid "Abstention"
-msgstr "Enthaltung"
-
 #: templates/jp/results.html:15
 msgid "Total"
 msgstr "Gesamt"
 
-#: templates/jp/results.html:25
+#: templates/jp/results.html:29
 msgid "No polls found"
 msgstr "Keine Abstimmungen gefunden"

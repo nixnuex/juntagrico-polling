@@ -11,6 +11,7 @@ class Poll(models.Model):
     question = models.TextField(_('Question'), max_length=500, blank=False)
     description = models.TextField(_('Description'), max_length=1000,
                                    blank=True, default='')
+    allow_abstention = models.BooleanField(_('Allow Abstention'), default=True)
     open_date = models.DateTimeField(_('Open Date'))
     close_date = models.DateTimeField(_('Close Date'))
     display_order = models.IntegerField(_('Display Order'), null=False,
