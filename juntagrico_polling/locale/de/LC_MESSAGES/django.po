@@ -31,8 +31,6 @@ msgid "Description"
 msgstr "Beschreibung"
 
 #: entity/polling.py:14
-#, fuzzy
-#| msgid "Abstention"
 msgid "Allow Abstention"
 msgstr "Erlaube Enthaltungen"
 
