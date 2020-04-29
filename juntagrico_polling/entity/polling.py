@@ -20,6 +20,9 @@ class Poll(models.Model):
     add_menu_link = models.BooleanField(_('Add Link to Main Menu'),
                                         default=True)
 
+    def __str__(self):
+        return '%s (%d)' % (self.title, self.id)
+
     class Meta:
         permissions = (('can_see_poll_results', _('Can see poll results')),)
 
