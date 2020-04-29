@@ -6,11 +6,7 @@
 {% endblock %}
 
 {% block content %}
-    {% if forbidden_to_vote is True %}
-        <p>
-            {% trans "You are not allowed to participate in the poll. Please contact us via mail for further information." %}
-        </p>
-    {% else %}
+    {% if allowed_to_vote is True %}
         {% for poll in polls %}
                <h4>{{ poll.title }}</h4>
                 <p><strong>{{ poll.question }}</strong></p>
@@ -33,6 +29,10 @@
             {% empty %}
                 {% trans "No active polls found" %}
             {% endfor %}
+    {% else %}
+        <p>
+            {% trans "You are not allowed to participate in the poll. Please contact us via mail for further information." %}
+        </p>
     {% endif %}
 {% endblock %}
 
