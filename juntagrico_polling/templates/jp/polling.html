@@ -8,7 +8,7 @@
 {% block content %}
     {% if allowed_to_vote is True %}
         {% for poll in polls %}
-               <h4>{{ poll.title }}</h4>
+               <h4 id="poll_{{ poll.id }}">{{ poll.title }}</h4>
                 <p><strong>{{ poll.question }}</strong></p>
                 <p>{{ poll.description }}</p>
                 <div class="btn-group" role="group" aria-label="Basic example">
@@ -24,7 +24,6 @@
                       {% trans "Abstention" %}</button>
                   {% endif %}
                 </div>
-                {% if poll.choice >= 0 %}<strong>{% trans "Vote successful!" %}</strong>{% endif %}
                 <hr>
             {% empty %}
                 {% trans "No active polls found" %}

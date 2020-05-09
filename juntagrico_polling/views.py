@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, reverse
 from django.contrib.auth.decorators import login_required, permission_required
 from juntagrico.views import get_menu_dict
 from juntagrico_polling.entity.polling import Poll
@@ -7,13 +7,10 @@ from juntagrico_polling.dao.pollingdao import PollingDao
 
 
 @login_required
-def poll(request, poll_id=None, choice=None):
+def poll_list(request):
     renderdict = get_menu_dict(request)
-    allowed_to_vote = PollingDao.is_member_with_shares(request.user)
+    allowed_to_vote = user_allowed_to_vote(request.user)
     if allowed_to_vote:
-        if poll_id is not None and 0 <= choice <= 2:
-            submit_vote(request.user, poll_id, choice)
-
         active_polls = PollingDao.active_polls_ordered()
         user_votes = PollingDao.votes_from_user(request.user)
         for thispoll in active_polls:
@@ -30,16 +27,27 @@ def poll(request, poll_id=None, choice=None):
     return render(request, "jp/polling.html", renderdict)
 
 
-def submit_vote(user, poll_id, choice):
-    if 0 <= choice <= 2:
+def submit_vote(request, poll_id=None, choice=None):
+    allowed_to_vote = user_allowed_to_vote(request.user)
+    redirect_url = reverse('polling:list')
+    if allowed_to_vote and poll_id is not None and 0 <= choice <= 2:
         try:
             poll_selected = PollingDao.active_polls_ordered().get(id=poll_id)
             if poll_selected and \
                     (choice <= 1 or poll_selected.allow_abstention):
                 Vote.objects.update_or_create(
-                    user=user, poll=poll_selected, defaults={'choice': choice})
+                    user=request.user, poll=poll_selected,
+                    defaults={'choice': choice})
+                redirect_url += '#poll_' + str(poll_id)
+                return redirect(redirect_url)
         except Poll.DoesNotExist:
             pass
+    return redirect(redirect_url)
+
+
+def user_allowed_to_vote(user):
+    allowed_to_vote = PollingDao.is_member_with_shares(user)
+    return allowed_to_vote
 
 
 @permission_required('juntagrico_polling.can_see_poll_results')
