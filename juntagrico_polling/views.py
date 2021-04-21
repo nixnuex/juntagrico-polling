@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib.auth.decorators import login_required, permission_required
-from juntagrico.views import get_menu_dict
 from juntagrico_polling.entity.polling import Poll
 from juntagrico_polling.entity.polling import Vote
 from juntagrico_polling.dao.pollingdao import PollingDao
@@ -8,7 +7,6 @@ from juntagrico_polling.dao.pollingdao import PollingDao
 
 @login_required
 def poll_list(request):
-    renderdict = get_menu_dict(request)
     allowed_to_vote = user_allowed_to_vote(request.user)
     if allowed_to_vote:
         active_polls = PollingDao.active_polls_ordered()
@@ -20,10 +18,10 @@ def poll_list(request):
                 thispoll.choice = vote.choice
             else:
                 thispoll.choice = None
-        renderdict.update({
+        renderdict = {
             'polls': active_polls,
             'allowed_to_vote': True,
-        })
+        }
     return render(request, "jp/polling.html", renderdict)
 
 
@@ -59,8 +57,7 @@ def results(request):
         thispoll.no = sum(vote.choice == 0 for vote in user_votes)
         thispoll.abstention = sum(vote.choice == 2 for vote in user_votes)
         thispoll.votes = user_votes.count()
-    renderdict = get_menu_dict(request)
-    renderdict.update({
+    renderdict = {
         'polls': polls,
-    })
+    }
     return render(request, "jp/results.html", renderdict)
