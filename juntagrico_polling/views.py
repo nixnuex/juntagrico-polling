@@ -22,6 +22,10 @@ def poll_list(request):
             'polls': active_polls,
             'allowed_to_vote': True,
         }
+    else:
+        renderdict = {
+            'allowed_to_vote': False,
+        }
     return render(request, "jp/polling.html", renderdict)
 
 
