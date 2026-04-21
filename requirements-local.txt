@@ -1,2 +1,2 @@
-lxml==4.9.1
+lxml==6.1.0
 git+http://github.com/juntagrico/juntagrico.git
